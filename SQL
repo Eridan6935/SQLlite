@@ -1,3 +1,31 @@
+CREATE PROCEDURE ps_student_groups_insert(IN count INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE group_name VARCHAR(50);
+
+    -- Цикл заполнения таблицы
+    WHILE i <= count DO
+
+        -- Вызываем функцию генерации группы
+        SET group_name = fn_random_student_group();
+
+        -- Добавляем группу в таблицу
+        INSERT INTO student_groups(group_name)
+        VALUES(group_name);
+
+        -- Увеличиваем счётчик
+        SET i = i + 1;
+
+    END WHILE;
+
+END 
+
+
+
+
+
+
+
 CREATE PROCEDURE ps_students_insert(IN count INT)
 BEGIN
     DECLARE i INT DEFAULT 1;
