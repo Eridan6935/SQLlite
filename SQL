@@ -1,3 +1,65 @@
+CREATE PROCEDURE ps_students_insert(IN count INT)
+BEGIN
+    DECLARE i INT DEFAULT 1;
+    DECLARE full_name VARCHAR(200);
+
+    -- Цикл заполнения таблицы
+    WHILE i <= count DO
+
+        -- Получаем случайное ФИО из функции
+        SET full_name = fn_random_student_name();
+
+        -- Добавляем студента
+        INSERT INTO students(first_name, last_name)
+        VALUES(
+            SUBSTRING_INDEX(full_name, ' ', 1),
+            SUBSTRING_INDEX(full_name, ' ', -1)
+        );
+
+        -- Увеличиваем счётчик
+        SET i = i + 1;
+
+    END WHILE;
+
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CREATE PROCEDURE ps_shedule_insert (IN count int)
 BEGIN
 	DECLARE i int default 1;
